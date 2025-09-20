@@ -22,8 +22,8 @@ public class InputUtils
     
     public static (double, double) RequestNumbers()
     {
-        var a = InputUtils.ReadDouble("Enter the first number: ");
-        var b = InputUtils.ReadDouble("Enter the second number: ");
+        var a = ReadDouble("Enter the first number: ");
+        var b = ReadDouble("Enter the second number: ");
         return (a, b);
     }
 }
