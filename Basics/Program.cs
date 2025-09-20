@@ -15,21 +15,21 @@ else
 }
 
 // Задание 2
-Console.WriteLine("Введите сегодняшнюю дату (дд мм гггг):");
-if (DateTime.TryParse(Console.ReadLine(), out DateTime today))
+Console.WriteLine("Enter the current date (dd mm yyyy):");
+if (DateTime.TryParse(Console.ReadLine(), out var today))
 {
-    DateTime tomorrow = today.AddDays(1);
-    Console.WriteLine($"Завтрашняя дата: {tomorrow:dd.MM.yyyy}");
+    var tomorrow = today.AddDays(1);
+    Console.WriteLine($"Tomorrow date: {tomorrow:dd.MM.yyyy}");
 }
 else
 {
-    Console.WriteLine("Неверный формат даты! Введите как: 13 09 2025");
+    Console.WriteLine("Invalid date format. Enter like: 13 09 2025");
 }
 
 // Задание 3
 Console.WriteLine("Enter the current year:");
 var year = Convert.ToInt32(Console.ReadLine());
-if ((year % 400 == 0) || (year % 4 == 0 && year % 100 != 0))
+if (year % 400 == 0 || (year % 4 == 0 && year % 100 != 0))
 {
     Console.WriteLine("It's a leap year!");
 }
@@ -41,18 +41,18 @@ else
 // Задание 4
 Console.WriteLine("Enter the current week's day number:");
 var dayNumber = Convert.ToInt32(Console.ReadLine());
-if (dayNumber < 1 || dayNumber > 7)
+switch (dayNumber)
 {
-    Console.WriteLine("Invalid day number");
-    return;
-}
-if (dayNumber is >= 1 and <= 5)
-{
-    Console.WriteLine("Today is a work day!");
-}
-else
-{
-    Console.WriteLine("Hooray! A weekend!");
+    case < 1:
+    case > 7:
+        Console.WriteLine("Invalid day number");
+        return;
+    case <= 5:
+        Console.WriteLine("Today is a work day!");
+        break;
+    default:
+        Console.WriteLine("Hooray! A weekend!");
+        break;
 }
 
 // Задание 5
