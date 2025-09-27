@@ -88,7 +88,8 @@ switch (mode)
 
 // Задание №2
 Console.Write("Введите номер билета (6 цифр): ");
-if (!int.TryParse(Console.ReadLine(), out var ticket) || ticket < 0 || ticket > 999999)
+var numberInput = Console.ReadLine();
+if (numberInput?.Length != 6 || !int.TryParse(numberInput, out var ticket) || ticket < 0 || ticket > 999999)
 {
     Console.WriteLine("Ошибка: нужно ввести шестизначное число.");
     return;
