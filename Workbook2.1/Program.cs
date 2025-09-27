@@ -14,7 +14,7 @@ for (var i = 1; i < 11; i++)
 // Задание №2
 double F(int x)
 {
-    return Math.Pow(5 * x, 2) - x + 2;
+    return 5 * Math.Pow(x, 2) - x + 2;
 }
 
 double Trapezoidal(int a, int b, int n)
