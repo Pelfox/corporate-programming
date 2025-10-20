@@ -86,16 +86,35 @@ Console.WriteLine($"Число {x} в 2-й СС: {Convert.ToString(x, 2)}.");
 Console.WriteLine("Введите ряд чисел. Чтобы закончить ввод, напишите `exit`:");
 
 var numbers = new List<int>();
-var currentInput = Console.ReadLine();
-while (currentInput?.ToLower() != "exit")
+while (true)
 {
-    if (!int.TryParse(currentInput, out var i))
+    var input = Console.ReadLine()?.Trim().ToLower();
+    if (input == "exit")
+    {
+        break;
+    }
+
+    if (string.IsNullOrEmpty(input))
+    {
+        Console.WriteLine("Введена пустая строка - введите число или 'exit'.");
+        continue;
+    }
+
+    if (!int.TryParse(input, out var i))
     {
         Console.WriteLine("Введите корректное число.");
         continue;
     }
     numbers.Add(i);
-    currentInput = Console.ReadLine();
+
 }
 
-Console.WriteLine($"Максимум в введённом ряде чисел: {numbers.Max()}");
+if (numbers.Count == 0)
+{
+    Console.WriteLine("Вы не ввели ни одного числа.");
+
+}
+else
+{
+    Console.WriteLine($"Максимум в введённом ряде чисел: {numbers.Max()}");
+}
