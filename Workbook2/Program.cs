@@ -88,7 +88,7 @@ switch (mode)
 
 // Задание №2
 Console.Write("Введите номер билета (6 цифр): ");
-var numberInput = Console.ReadLine();
+var numberInput = Console.ReadLine()?.Trim();
 if (numberInput?.Length != 6 || !int.TryParse(numberInput, out var ticket) || ticket < 0 || ticket > 999999)
 {
     Console.WriteLine("Ошибка: нужно ввести шестизначное число.");
@@ -270,7 +270,7 @@ while (true)
 
 // Задание №6
 Console.Write("Введите количество бактерий: ");
-if (!int.TryParse(Console.ReadLine(), out var bacteria) || bacteria < 0)
+if (!long.TryParse(Console.ReadLine(), out var bacteria) || bacteria < 0)
 {
     Console.WriteLine("Ошибка: нужно ввести неотрицательное число.");
     return;
