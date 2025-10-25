@@ -142,7 +142,8 @@ if (n2 < 0)
     n2 = -n2;
 }
 
-Console.WriteLine($"Результат: {m} / {n2}.");
+Console.Write($"Результат: {m}");
+Console.Write(n2 == 0 ? $" / {n2}.\n" : "\n");
 
 // Задание №4
 Console.WriteLine("Загадайте число от 0 до 63. Я попробую его угадать.");
@@ -220,7 +221,19 @@ while (true)
         break;
     }
 
-    Console.Write("Выберите напиток (1 — американо, 2 — латте): ");
+    Console.Write("Выберите напиток (");
+    var options = new List<string>();
+    if (canAmericano)
+    {
+        options.Add("1 — американо");
+    }
+
+    if (canLatte)
+    {
+        options.Add("2 — латте");
+    }
+    Console.Write(string.Join(", ", options));
+    Console.Write("): ");
     var input = Console.ReadLine();
 
     switch (input)
@@ -317,9 +330,34 @@ int ReadInt(string message)
 
 bool CanFit(int n, int a, int b, int w, int h, int d)
 {
-    var count1 = w / (a + 2 * d) * (h / (b + 2 * d));
-    var count2 = w / (b + 2 * d) * (h / (a + 2 * d));
-    return Math.Max(count1, count2) >= n;
+    var cols1 = w / (a + 2 * d);
+    var rows1 = h / (b + 2 * d);
+    var cols2 = w / (b + 2 * d);
+    var rows2 = h / (a + 2 * d);
+
+    // максимальное количество прямоугольников в двух ориентациях
+    var fit1 = cols1 * rows1;
+    var fit2 = cols2 * rows2;
+
+    if (fit1 >= n || fit2 >= n)
+    {
+        return true;
+    }
+
+    // пробуем комбинировать повороты прямоугольникв
+    for (var i = 0; i <= cols1; i++)
+    {
+        for (var j = 0; j <= rows2; j++)
+        {
+            var placed = i * rows1 + j * cols2;
+            if (placed >= n)
+            {
+                return true;
+            }
+        }
+    }
+
+    return false;
 }
 
 var n3 = ReadInt("Введите n: ");
