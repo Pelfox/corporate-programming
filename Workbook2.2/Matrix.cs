@@ -35,10 +35,10 @@ public class Matrix
                     continue;
                 }
 
-                if (line.All(p => double.TryParse(p, out _)))
+                if (line.All(p => double.TryParse(p, NumberStyles.Float, CultureInfo.InvariantCulture, out _)))
                 {
                     for (var j = 0; j < _cols; j++)
-                        _matrix[i, j] = double.Parse(line[j]);
+                        _matrix[i, j] = double.Parse(line[j], CultureInfo.InvariantCulture);
                     break;
                 }
                 Console.WriteLine("Одно или несколько введённых чисел невалидны.");

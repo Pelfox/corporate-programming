@@ -56,6 +56,10 @@ while (true)
         }
         case "3":
         {
+            Console.WriteLine("Сложение для этих матриц:");
+            matrixA.PrintMatrix();
+            matrixB.PrintMatrix();
+            
             var resultMatrix = matrixA + matrixB;
             if (resultMatrix == null)
             {
@@ -68,6 +72,10 @@ while (true)
         }
         case "4":
         {
+            Console.WriteLine("Умножение для этих матриц:");
+            matrixA.PrintMatrix();
+            matrixB.PrintMatrix();
+            
             var resultMatrix = matrixA * matrixB;
             if (resultMatrix == null)
             {
@@ -81,6 +89,9 @@ while (true)
         case "5":
         {
             var matrix = SelectMatrix();
+            Console.WriteLine("Вычисление детерминанта для матрицы:");
+            matrix.PrintMatrix();
+            
             var determinant = matrix.GetDeterminant();
             if (determinant == null)
             {
@@ -93,6 +104,9 @@ while (true)
         case "6":
         {
             var matrix = SelectMatrix();
+            Console.WriteLine("Поиск обратной матрицы к этой:");
+            matrix.PrintMatrix();
+            
             var inverseMatrix = matrix.GetInverse();
             if (inverseMatrix == null)
             {
@@ -105,12 +119,19 @@ while (true)
         case "7":
         {
             var matrix = SelectMatrix();
+            Console.WriteLine("Транспонирование матрицы:");
+            matrix.PrintMatrix();
+            
             var transposedMatrix = matrix.GetTransposed();
             transposedMatrix.PrintMatrix();
             break;
         }
         case "8":
         {
+            Console.WriteLine("Вычисление уравнений для этих матриц:");
+            matrixA.PrintMatrix();
+            matrixB.PrintMatrix();
+            
             var resultMatrix = Matrix.SolveLinearSystem(matrixA, matrixB);
             if (resultMatrix == null)
             {
